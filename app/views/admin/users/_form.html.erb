@@ -1,4 +1,14 @@
 <%= form_for [:admin, @user] do |f| %>
+  <% if @user.errors.any? %>
+    <div>
+      <%= pluralize(@user.errors.count, "error") %> prevented the account from being created:
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div>
     <%= f.label "firstname" %><br>
@@ -9,12 +19,21 @@
     <%= f.text_field "lastname" %>
   </div>
   <div>
-    <%= label_tag "email" %><br/>
-    <%= text_field_tag "email" %>
+    <%= label_tag "email" %><br>
+    <%= f.email_field "email" %>
   </div>
   <div>
-    <%= label_tag :password %><br/>
-    <%= password_field_tag :password %>
+    <%= f.check_box(:admin) %>
+    <%= label_tag(:admin, 'admin') %>
+  </div>
+
+  <div>
+    <%= f.label "password" %><br>
+    <%= f.password_field "password" %>
+  </div>
+  <div>
+    <%= f.label "password_confirmation" %><br>
+    <%= f.password_field "password_confirmation" %>
   </div>
   <div>
     <%= f.submit "Submit" %> 

@@ -1,7 +1,9 @@
 class Admin::UsersController < ApplicationController
 
+  before_action :be_admin
+
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(10)
   end
 
   def new
@@ -18,11 +20,11 @@ class Admin::UsersController < ApplicationController
 
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(admin_user_params)
 
     if @user.save
-      session[:user_id] = @user.id
-      redirect_to movies_path, notice: "Welcome aboard, #{@user.firstname}!"
+      # session[:user_id] = @user.id
+      redirect_to admin_users_path, notice: "#{@user.firstname} created!"
     else
       render :new
     end
@@ -46,9 +48,17 @@ class Admin::UsersController < ApplicationController
 
   protected
 
+  def be_admin
+
+    if !current_user.admin 
+     flash[:alert] = "You must be an admin to view that page." 
+     redirect_to movies_path 
+    end 
+  end
+
   def admin_user_params
     params.require(:user).permit(
-      :firstname, :lastname, :email, :password
+      :firstname, :lastname, :email, :admin, :password, :password_confirmation
     )
   end
 

@@ -3,4 +3,6 @@
 <h2><%= @user.full_name %> (<%= link_to "edit", edit_admin_user_path(@user) %>, <%= link_to "delete", admin_user_path(@user), method: :delete, confirm: "You sure?" %>)</h2>
 
 <h3><%= @user.email %></h3>
+<h3>Admin: <%= @user.admin %></h3>
+
 

@@ -1,6 +1,11 @@
 <h1>Rotten Mangoes</h1>
 
+<%= link_to "Back to all movies", movies_path %><br/>
+<%= link_to "Create a user", new_admin_user_path %><br/>
+
+
 <hr>
+<%= paginate @users %>
 <% @users.each do |user| %>
   <h2><%= link_to user.full_name, admin_user_path(user) %></h2>
   <hr>
