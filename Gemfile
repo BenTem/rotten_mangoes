@@ -39,6 +39,7 @@ gem 'pry'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'kaminari'
+gem 'faker'
 
 # Use unicorn as the app server
 # gem 'unicorn'

@@ -5,3 +5,47 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+# if Rails.env.development?
+ 
+#   users = []
+#   reviews = []
+#   movies = []
+
+#   100.times do |i|
+#     movies << Movie.create(
+#         title: Faker::Lorem.sentence,
+#         director: Faker::Name.name,
+#         runtime_in_minutes: Faker::Number.number(3),
+#         description: Faker::Lorem.sentence,
+#         poster_image_url: nil,
+#         release_date: Faker::Date.forward(400),
+#         image: nil,
+#         reviews: reviews.sample
+#     )
+#   end
+
+#   200.times do |i|
+#     reviews << Review.create(
+#         text: Faker::Lorem.paragraphs(3),
+#         user: users.sample, 
+#         movie: movies.sample
+#     )
+#   end
+
+#   100.times do |i|
+#     users << User.create(
+#       email: Faker::Internet.email, 
+#       password: Faker::Internet.password(8, 20), 
+#       firstname: Faker::Name.first_name, 
+#       lastname: Faker::Name.last_name, 
+#       admin: false
+#       )
+#   end
+
+
+ 
+
+ 
+
+ 
+# end
