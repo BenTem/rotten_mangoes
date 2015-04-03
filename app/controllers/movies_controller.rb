@@ -26,8 +26,8 @@ class MoviesController < ApplicationController
   end
 
   def search
-    @movies = Movie.where("title LIKE '%' || ? || '%' OR director LIKE '%' || ? || '%' OR description LIKE '%' || ? || '%'", params[:q], params[:q], params[:q]).page(params[:page]).per(10)
-
+    query = params[:q]
+    @movies = Movie.search(query).page(params[:page]).per(10)
     render :index
   end
 
