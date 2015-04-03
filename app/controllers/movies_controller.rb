@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all
+    @movies = Movie.all.page(params[:page]).per(10)
   end
 
   def show
@@ -23,6 +23,12 @@ class MoviesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def search
+    @movies = Movie.where("title LIKE '%' || ? || '%' OR director LIKE '%' || ? || '%' OR description LIKE '%' || ? || '%'", params[:q], params[:q], params[:q])
+
+    render :index
   end
 
   def update

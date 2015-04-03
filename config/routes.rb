@@ -2,6 +2,7 @@ RottenMangoes::Application.routes.draw do
   get "admin/new"
   get "admin/create"
   resources :movies do
+    get :search, on: :collection
     resources :reviews, only: [:new, :create]
   end
 
