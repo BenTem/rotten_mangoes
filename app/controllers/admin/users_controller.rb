@@ -23,7 +23,6 @@ class Admin::UsersController < ApplicationController
     @user = User.new(admin_user_params)
 
     if @user.save
-      # session[:user_id] = @user.id
       redirect_to admin_users_path, notice: "#{@user.firstname} created!"
     else
       render :new
