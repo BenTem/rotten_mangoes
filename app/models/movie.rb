@@ -21,7 +21,9 @@ class Movie < ActiveRecord::Base
 
   validate :release_date_is_in_the_future
 
-  scope :search, -> (query) { where("title LIKE ? OR director LIKE ? OR description LIKE ? ", "%#{query}%", "%#{query}%", "%#{query}%") }
+  scope :search, -> (query)  { where("title LIKE ? OR director LIKE ? OR description LIKE ?", "%#{query}%", "%#{query}%", "%#{query}%") }  
+
+  scope :search_time, -> (time) { where(time) }  
 
   def review_average
     reviews.sum(:rating_out_of_ten)/reviews.size

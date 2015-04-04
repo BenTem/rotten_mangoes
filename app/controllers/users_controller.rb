@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
-      redirect_to admin_user_path(@user)
+      redirect_to movies_path
     else
       render :edit
     end

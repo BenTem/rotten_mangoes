@@ -1,6 +1,13 @@
 class MoviesController < ApplicationController
+
   def index
-    @movies = Movie.all.page(params[:page]).per(10)
+    query = params[:q]
+    time = params[:t]
+    if query || time
+      @movies = Movie.search(query).search_time(time).page(params[:page]).per(10)
+    else
+      @movies = Movie.all.page(params[:page]).per(10)
+    end
   end
 
   def show
@@ -23,12 +30,6 @@ class MoviesController < ApplicationController
     else
       render :new
     end
-  end
-
-  def search
-    query = params[:q]
-    @movies = Movie.search(query).page(params[:page]).per(10)
-    render :index
   end
 
   def update
