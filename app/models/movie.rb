@@ -26,7 +26,7 @@ class Movie < ActiveRecord::Base
   scope :search_time, -> (time) { where(time) }  
 
   def review_average
-    reviews.sum(:rating_out_of_ten)/reviews.size
+    reviews.sum(:rating_out_of_ten)/reviews.size if reviews.size > 0
   end
 
   protected
