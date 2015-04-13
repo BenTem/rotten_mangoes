@@ -9,5 +9,30 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require bootstrap.min
+ *= require bootstrap-theme.min
+ *= require bootstrap_overrides
  */
+
+ /*.row { outline: 1px solid red; }*/
+ /*[class^=col] { outline: 1px solid green; }*/
+/*select#t {
+  color: red;
+}*/
+.thumbnail {
+  height: 460px;
+}
+
+#search_form {
+  margin-top: 25px;
+}
+
+#brand {
+  margin-bottom: 15px;
+} 
+#footer {
+  clear: both;
+}
+#footer p {
+  margin-left: 20px;
+}

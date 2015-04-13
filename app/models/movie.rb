@@ -23,7 +23,7 @@ class Movie < ActiveRecord::Base
 
   scope :search, -> (query)  { where("title LIKE ? OR director LIKE ? OR description LIKE ?", "%#{query}%", "%#{query}%", "%#{query}%") }  
 
-  scope :search_time, -> (time) { where(time) }  
+  scope :search_time, -> (time) { where(time) }
 
   def review_average
     reviews.sum(:rating_out_of_ten)/reviews.size if reviews.size > 0

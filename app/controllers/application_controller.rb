@@ -13,7 +13,17 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-   @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if is_admin && session[:acting_as]
+      @current_user ||= User.find(session[:acting_as])
+    else
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
+  end
+
+  def is_admin
+    if session[:user_id]
+      User.find(session[:user_id]).admin
+    end
   end
 
   helper_method :current_user

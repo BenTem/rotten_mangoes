@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>RottenMangoes</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <%= render 'layouts/header' %>
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value) %>
-  <% end %>
-  <%= yield %>
-  <%= render 'layouts/footer' %>
-</body>
+  <head>
+    <title>RottenMangoes</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="main-container" class="container-fluid">
+      <div class="row">
+
+        <div id="main-content" class="col-xs-12">
+            <%= render 'layouts/header' %>
+            <% flash.each do |key, value| %>
+              <%= content_tag(:div, value) %>
+            <% end %>
+            <%= yield %>
+            <hr>
+            <div id="footer" class="row">
+            <%= render 'layouts/footer' %> 
+</div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

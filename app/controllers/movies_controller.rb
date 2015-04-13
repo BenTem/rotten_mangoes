@@ -4,9 +4,9 @@ class MoviesController < ApplicationController
     query = params[:q]
     time = params[:t]
     if query || time
-      @movies = Movie.search(query).search_time(time).page(params[:page]).per(10)
+      @movies = Movie.search(query).search_time(time).page(params[:page]).per(9)
     else
-      @movies = Movie.all.page(params[:page]).per(10)
+      @movies = Movie.all.page(params[:page]).per(9)
     end
   end
 

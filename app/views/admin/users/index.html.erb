@@ -3,6 +3,6 @@
 <hr>
 <%= paginate @users %>
 <% @users.each do |user| %>
-  <h2><%= link_to user.full_name, admin_user_path(user) %></h2>
+  <h4><%= link_to user.full_name, admin_user_path(user) %></h4>  <p> <%= link_to "Act as #{user.full_name}", new_session_path(user)  %>  </p>
   <hr>
 <% end %>

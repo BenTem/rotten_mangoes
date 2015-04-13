@@ -1,17 +1,31 @@
-<%= paginate @movies %>
-<% @movies.each do |movie| %>
-  <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
-  <%= image_tag movie.image_url(:thumb).to_s %>
-  <h2><%= link_to movie.title, movie_path(movie) %></h2>
-  <h3><%= movie.release_date %></h3>
-  <h4>Dir. <%= movie.director %> | 
-    <%= movie.runtime_in_minutes %> minutes | 
-    <% if movie.review_average %>
-      <%= movie.review_average %>
-    <% else %>
-      <small> No reviews </small>
+<div class="row">
+  <div class="col-md-4">
+    <%= paginate @movies %>
+  </div>
+</div>
+
+<% @movies.each_slice(3) do |slice| %>
+  <div class="row">
+    <% slice.each do |movie| %>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
+          <%= image_tag movie.image_url(:thumb).to_s %>
+          <div class="caption">
+          <h2><%= link_to movie.title, movie_path(movie) %></h2>
+          <h3><%= movie.release_date %></h3>
+          <h4>Dir. <%= movie.director %> | 
+            <%= movie.runtime_in_minutes %> minutes | 
+            <% if movie.review_average %>
+              <%= movie.review_average %> avg
+            <% else %>
+              <small> No reviews </small>
+            <% end %>
+          </h4>
+          <p><%= movie.description %></p>
+          </div>
+        </div>
+      </div> 
     <% end %>
-  </h4>
-  <p><%= movie.description %></p>
-  <hr>
+  </div>
 <% end %>

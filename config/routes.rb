@@ -3,7 +3,7 @@ RottenMangoes::Application.routes.draw do
   get "admin/create"
   resources :movies do
     get :search, on: :collection
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [:new, :create] 
   end
 
   namespace :admin do
@@ -11,7 +11,7 @@ RottenMangoes::Application.routes.draw do
   end
   
   resources :users, only: [:new, :create, :update, :edit]
-  resources :sessions, only: [:new, :create, :destroy]
+  resource :session, only: [:new, :create, :destroy]
   root to: 'movies#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

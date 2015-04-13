@@ -4,18 +4,19 @@
 
 <h3><%= @user.email %></h3>
 <h3>Admin: <%= @user.admin %></h3>
-
 <h3>Reviews by <em><%= @user.full_name %></em></h3>
 
   <% @user.reviews.each do |review| %>
-    <p><%= link_to "#{review.movie.title}", movie_path(review) %></p>
+        <div class="col-md-4">
+
+  <div class="thumbnail">
+
+    <h2><%= link_to "#{review.movie.title}", movie_path(review) %></h2>
+    <div class="caption">
     <p><%= review.text %></p>
     <p><%= review.rating_out_of_ten %>/10</p>
     <small>- <%= review.user.full_name %></small><br/>
+    </div>
+    </div>
+    </div>
   <% end %>
-  <p><%= link_to "Write a review!", new_movie_review_path(@movie) %></p>
-
-
-
-
-
