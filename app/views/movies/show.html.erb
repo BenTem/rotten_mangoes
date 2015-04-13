@@ -2,9 +2,12 @@
 
 <%= link_to image_tag(@movie.poster_image_url), movie_path(@movie) %>
 <%= image_tag @movie.image_url(:thumb).to_s %>
-<h2><%= @movie.title %> 
+<h2><%= @movie.title %>
+    <% if current_user %>
       <% if current_user.admin %>
-      (<%= link_to "edit", edit_movie_path(@movie) %>, <%= link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" %>)<% end %></h2>
+      (<%= link_to "edit", edit_movie_path(@movie) %>, <%= link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" %>)
+      <% end %></h2>
+      <% end %>
 <h3><%= @movie.release_date %></h3>
 <h4>
   Dir. <%= @movie.director %> | 
